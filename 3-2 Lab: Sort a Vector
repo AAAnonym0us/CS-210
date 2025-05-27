@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+unsigned int d; // First integer used in for loop.
+unsigned int r; // Second integer used in for loop
+// Updated the above integers to unsigned after seeing some compliation errors
+int tempVal; // temp integer to store values in vector during the swap operation
+
+// Program must define and call the following function
+void SortVector(vector<int>& myVector) {
+   // Bubble sort algorithm
+   for (d = 0; d < myVector.size() - 1; ++d) {
+      for (r = 0; r < myVector.size() - 1 - d; ++r) {
+         // This swaps the current element with the next element if it is less
+         if (myVector.at(r) < myVector.at(r + 1)) {
+            tempVal = myVector.at(r);
+            myVector.at(r) = myVector.at(r + 1);
+            myVector.at(r + 1) = tempVal;
+         }
+      }
+   }
+}
+
+int main() {
+   int NUM_VALUES; // Declare an integer value for the vector size
+   cin >> NUM_VALUES; // First input integer indicates how many numbers are in the list
+   
+   vector<int> myVector(NUM_VALUES); // Declare vector myVector
+      
+   // Populate the vector using a for loop of myVector.size
+   for (d = 0; d < myVector.size(); ++d) {
+      cin >> myVector.at(d);
+   }
+   
+   // Call SortVector to sort in descending order
+   SortVector(myVector);
+   
+   // Output every value followed by a comma, including the last one
+   for (d = 0; d < myVector.size(); ++d) {
+      cout << myVector.at(d) << ",";
+   }
+   cout << endl; // Newline required for test cases, despite no mention in instructions
+
+   return 0;
+}
